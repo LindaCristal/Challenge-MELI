@@ -1,9 +1,13 @@
 
 import './App.css';
 
+
+// Components
+import PageBase from './pages/PageBase';
+
 function App() {
   return (
-    <div>Challenge Meli</div>
+    <PageBase />
   );
 }
 

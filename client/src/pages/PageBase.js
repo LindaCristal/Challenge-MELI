@@ -1,15 +1,17 @@
-import React,{Component} from "react";
+import React from "react";
 import SearchBox from "../components/SearchBox";
 
-export default class PageBase extends Component {
-    render() {
-        return (
-            <>
+const PageBase = ({ children }) => {
+
+    return (
+        <>
             <SearchBox></SearchBox>
-                <div className="container">
-                
-                </div>
-            </>
-        )
-    }
+            <div className="container px-0">
+            { children }
+            </div>
+        </>
+    )
 }
+
+
+export default PageBase

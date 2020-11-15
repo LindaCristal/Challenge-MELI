@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import logo_small from "../assets/logo__small.png";
+import lupa from "../assets/ic_Search.png";
+
 
 const SearchBox = () => {
 
@@ -12,27 +14,27 @@ const SearchBox = () => {
     const onSubmit = e => {
         e.preventDefault();
         alert(value)
-      };
+    };
 
     return (
         <div className="header">
             <ul className="nav justify-content-center pt-3 container" >
                 <li className="nav-item mr-4 ">
-                    <img src={logo_small} alt="Mercado Libre"></img>
+                    <img src={logo_small} alt="Mercado Libre codo a codo"></img>
                 </li>
                 <li className="nav-item flex-grow-1 " >
-                    <form  onSubmit={onSubmit} >
+                    <form onSubmit={onSubmit} >
                         <div className="input-group mb-3 ">
                             <input type="text"
-                                class="form-control"
+                                className="form-control"
                                 placeholder="Nunca dejes de buscar"
                                 value={value}
                                 onChange={onChange}
-                                required
-                            />
+                                required/>
                             <div className="input-group-append">
-                                <button className="btn btn-outline-secondary"
-                                    type="submit" id="button-addon2">dibujar lupita
+                                <button className="btn btn-lupa btn-outline-secondary"
+                                    type="submit" id="button-addon2">
+                                        <img src={lupa} ></img>
                                 </button>
                             </div>
                         </div>

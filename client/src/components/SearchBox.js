@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import logo_small from "../assets/logo__small.png";
 import lupa from "../assets/ic_Search.png";
 
-
 const SearchBox = () => {
-
     const [value, setValue] = useState("");
 
     const onChange = e => {
@@ -19,14 +17,14 @@ const SearchBox = () => {
     return (
         <div className="header">
             <ul className="nav justify-content-center pt-3 container" >
-                <li className="nav-item mr-4 ">
+                <li className="nav-item mr-3 ">
                     <img src={logo_small} alt="Mercado Libre codo a codo"></img>
                 </li>
                 <li className="nav-item flex-grow-1 " >
                     <form onSubmit={onSubmit} >
                         <div className="input-group mb-3 ">
                             <input type="text"
-                                className="form-control"
+                                className="form-control notBorder"
                                 placeholder="Nunca dejes de buscar"
                                 value={value}
                                 onChange={onChange}
@@ -42,9 +40,7 @@ const SearchBox = () => {
                 </li>
             </ul>
         </div>
-
     )
-
 }
 
 export default SearchBox;

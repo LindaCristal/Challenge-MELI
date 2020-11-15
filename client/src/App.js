@@ -5,8 +5,8 @@ import './App.css';
 // Components
 import { BrowserRouter, Switch, Route, HashRouter } from "react-router-dom";
 import PageBase from './pages/PageBase';
-import Item from './components/Item';
 import ItemList from './pages/ItemList';
+import ItemDetail from './pages/ItemDetail';
 
 
 const Default = () => {
@@ -17,9 +17,9 @@ function App() {
   return (
     <BrowserRouter>
       <HashRouter>
-        <PageBase>
+        <PageBase >
           <Switch>
-            <Route path="/item" component={Item} />
+            <Route path="/itemdetail" component={ItemDetail} />
             <Route path="/items" component={ItemList} />
             <Route path="/" component={Default} />
           </Switch>

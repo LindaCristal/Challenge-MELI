@@ -17,14 +17,14 @@ const ItemDetail = ({item}) => {
         <div class="container">
             <div class="row">
                 <div class="col-8">
-                    <img className="align-self-center mr-3 img-detail"
+                    <img className="align-self-center mr-3 img-detail mt-3"
                         src={mock.picture}
                         alt="Generic placeholder image" />
                 </div>
-                <div class="col">
+                <div class="col-3">
                     <form>
-                        <div class="form-group">
-                        <p className="item-c">{mock.leyendasuperior}</p>
+                        <div class="form-group ">
+                        <p className="item-c mt-5">{mock.leyendasuperior}</p>
                             <p className="font-weight-bold item-title">{mock.title}</p>
                             <p className="item-price">{mock.price}</p>
                         </div>

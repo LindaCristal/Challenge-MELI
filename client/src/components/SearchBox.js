@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+
 import logo_small from "../assets/logo__small.png";
 import lupa from "../assets/ic_Search.png";
 
 const SearchBox = () => {
     const [value, setValue] = useState("");
+    const history = useHistory();
+
 
     const onChange = e => {
         setValue(e.target.value);
@@ -11,7 +15,7 @@ const SearchBox = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        alert(value)
+        history.push(`/items?query=${value}`);
     };
 
     return (
@@ -28,11 +32,11 @@ const SearchBox = () => {
                                 placeholder="Nunca dejes de buscar"
                                 value={value}
                                 onChange={onChange}
-                                required/>
+                                required />
                             <div className="input-group-append">
                                 <button className="btn btn-lupa btn-outline-secondary"
                                     type="submit" id="button-addon2">
-                                        <img src={lupa} ></img>
+                                    <img src={lupa} ></img>
                                 </button>
                             </div>
                         </div>

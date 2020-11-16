@@ -1,7 +1,4 @@
 
-import './App.css';
-
-
 // Components
 import { BrowserRouter, Switch, Route, HashRouter } from "react-router-dom";
 import PageBase from './pages/PageBase';
@@ -19,7 +16,7 @@ function App() {
       <HashRouter>
         <PageBase >
           <Switch>
-            <Route path="/itemdetail" component={ItemDetail} />
+            <Route path="/items/:id" component={ItemDetail} />
             <Route path="/items" component={ItemList} />
             <Route path="/" component={Default} />
           </Switch>

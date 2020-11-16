@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import axios from 'axios';
 
+const _URLBase = process.env.REACT_APP_URL_API_BASE;
 
 
 const useCategory = (query) => {
@@ -7,7 +9,14 @@ const useCategory = (query) => {
 
   useEffect(() => {
     if (query && query !== ""){
-      setCategories(["mock 1", "mock 2"])
+      return axios.get(`${_URLBase}items?q=${query}`)
+        .then(res => {
+          let data = res.data.categories;
+          setCategories(data);
+        })
+        .catch(err => {
+          throw err;
+        });
     }
      
   }, [query]);

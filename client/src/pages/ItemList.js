@@ -1,7 +1,6 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Item from "../components/Item";
-// import shipping from "../assets/ic_shipping.png";
 import useItems from '../customHooks/useItems';
 
 const ItemList = () => {
@@ -10,6 +9,12 @@ const ItemList = () => {
   const query = new URLSearchParams(search);
   const value = query.get("query");
   const { items } = useItems(value);
+  const history = useHistory();
+
+  const onSubmit = e => {
+    e.preventDefault();
+    history.push(`/items?query=${value}`);
+  };
 
   return (
     <div >
@@ -18,7 +23,7 @@ const ItemList = () => {
           return (
             <li key={item.id}
               className="list-group-item  "
-              onClick={() => alert("click")}>
+              onClick={onSubmit}>
               <Item props={item}></Item >
             </li>
           );

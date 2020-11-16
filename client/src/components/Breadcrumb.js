@@ -9,7 +9,6 @@ const Breadcrumb = () => {
     const { categories } = useCategory(value);
 
     return (
-
         <nav aria-label="breadcrumb ">
             <ol className="breadcrumb rounded-0 mb-0" >
                 {
@@ -19,7 +18,6 @@ const Breadcrumb = () => {
                         </li>
                     )
                 }
-
             </ol>
         </nav>
 

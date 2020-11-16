@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-
 import logo_small from "../assets/logo__small.png";
 import lupa from "../assets/ic_Search.png";
 
 const SearchBox = () => {
     const [value, setValue] = useState("");
     const history = useHistory();
-
 
     const onChange = e => {
         setValue(e.target.value);

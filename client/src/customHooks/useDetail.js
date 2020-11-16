@@ -3,26 +3,33 @@ import axios from 'axios';
 
 const _URLBase = process.env.REACT_APP_URL_API_BASE;
 
-const useDetail = (query) => {
-  const [detail, setDetail] = useState([]); 
+const useDetail = (id) => {
+  const [detail, setDetail] = useState([]);
 
   useEffect(() => {
-    if (query && query !== ""){
-        if (query && query !== "") {
-            return axios.get(`${_URLBase}items/${query}`)
-              .then(res => {
-                detail = res.data;
-                setItems({ detail });
-              })
-              .catch(err => {
-                throw err;
-              });
+    if (id && id !== "") {
+      axios.get(`${_URLBase}items/${id}`)
+        .then(res => {
+          let data = res.data.item;
+
+          setDetail({
+            pictures: data.pictures,
+            description: data.description,
+            condition: data.condition,
+            title: data.title,
+            sold_quantity: data.sold_quantity,
+            price: data.price.amount
           }
+          );
+
+        })
+        .catch(err => {
+          throw err;
+        });
     }
-     
-  }, [query]);
+
+  }, [id]);
 
   return { detail };
 };
-
 export default useDetail;

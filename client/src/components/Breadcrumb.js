@@ -9,20 +9,20 @@ const Breadcrumb = () => {
     const { categories } = useCategory(value);
 
     return (
-        <div class="">
-            <nav aria-label="breadcrumb ">
-                <ol class="breadcrumb rounded-0 mb-0" >
-                    {
-                        categories.map(i =>
-                            <li key={i}
-                                className="breadcrumb-item"><a href="#">{i}</a>
-                            </li>
-                        )
-                    }
 
-                </ol>
-            </nav>
-        </div>
+        <nav aria-label="breadcrumb ">
+            <ol className="breadcrumb rounded-0 mb-0" >
+                {
+                    categories.map(i =>
+                        <li key={i}
+                            className="breadcrumb-item">{i}
+                        </li>
+                    )
+                }
+
+            </ol>
+        </nav>
+
     );
 };
 

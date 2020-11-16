@@ -10,7 +10,41 @@
 
 }
 .btn-lupa:hover {
-  background-color: #eeeeee;
-  
+  background-color: #eeeeee;  
+}
 
+body{
+  background: #eeeeee;
+}
+
+.page-container{
+  background: #fff;
+}
+
+.notBorder{
+  border: none;
+}
+
+
+.img-detail{
+  min-width: 680px;
+}
+
+.item-title{
+  font-size: 24px;
+}
+
+.item-c{
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+}
+
+.item-price{
+  font-size: 46px;
+}
+
+.item-shipping{
+  margin-bottom: 6px;
+  margin-left: .5em;
 }

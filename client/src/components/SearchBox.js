@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+
 import logo_small from "../assets/logo__small.png";
 import lupa from "../assets/ic_Search.png";
 
-
 const SearchBox = () => {
-
     const [value, setValue] = useState("");
+    const history = useHistory();
+
 
     const onChange = e => {
         setValue(e.target.value);
@@ -13,28 +15,28 @@ const SearchBox = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        alert(value)
+        history.push(`/items?query=${value}`);
     };
 
     return (
         <div className="header">
             <ul className="nav justify-content-center pt-3 container" >
-                <li className="nav-item mr-4 ">
+                <li className="nav-item mr-3 ">
                     <img src={logo_small} alt="Mercado Libre codo a codo"></img>
                 </li>
                 <li className="nav-item flex-grow-1 " >
                     <form onSubmit={onSubmit} >
                         <div className="input-group mb-3 ">
                             <input type="text"
-                                className="form-control"
+                                className="form-control notBorder"
                                 placeholder="Nunca dejes de buscar"
                                 value={value}
                                 onChange={onChange}
-                                required/>
+                                required />
                             <div className="input-group-append">
                                 <button className="btn btn-lupa btn-outline-secondary"
                                     type="submit" id="button-addon2">
-                                        <img src={lupa} ></img>
+                                    <img src={lupa} ></img>
                                 </button>
                             </div>
                         </div>
@@ -42,9 +44,7 @@ const SearchBox = () => {
                 </li>
             </ul>
         </div>
-
     )
-
 }
 
 export default SearchBox;

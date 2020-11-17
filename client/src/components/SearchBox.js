@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-
 import logo_small from "../assets/logo__small.png";
 import lupa from "../assets/ic_Search.png";
 
 const SearchBox = () => {
     const [value, setValue] = useState("");
     const history = useHistory();
-
 
     const onChange = e => {
         setValue(e.target.value);
@@ -28,7 +26,7 @@ const SearchBox = () => {
                     <form onSubmit={onSubmit} >
                         <div className="input-group mb-3 ">
                             <input type="text"
-                                className="form-control notBorder"
+                                className="form-control notBorder font-placeholder"
                                 placeholder="Nunca dejes de buscar"
                                 value={value}
                                 onChange={onChange}

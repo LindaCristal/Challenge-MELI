@@ -1,3 +1,4 @@
+$breadcrumb-divider: quote(">");
 @import '~bootstrap/scss/bootstrap.scss';
 
 
@@ -47,4 +48,23 @@ body{
 .item-shipping{
   margin-bottom: 6px;
   margin-left: .5em;
+}
+
+.breadcrumb-item{
+  color: #999999 !important;
+}
+
+.font-placeholder{
+  font-size: 18px;
+  color: #999999;
+}
+
+.font-description-title{
+  font-size: 28px;
+  color: #333333;
+}
+
+.font-description{
+  font-size: 16px;
+  color: #666666;
 }

@@ -18,6 +18,10 @@ const useCategory = (query) => {
           throw err;
         });
     }
+    else{
+      setCategories([]);
+
+    }
      
   }, [query]);
 

@@ -7,13 +7,13 @@ const ItemDetail = () => {
     let { id } = useParams();
     const { detail } = useDetail(id);
 
-    const numberFormat = new Intl.NumberFormat("de-DE");       
+    const numberFormat = new Intl.NumberFormat("de-DE").format(detail.price);
 
     return (
         <div className="container ">
             <div className="row">
                 <div className="col-8">
-                    <img className="align-self-center mr-3 img-detail mt-3"
+                    <img className="img-thumbnail mr-3 img-detail p-0 mt-3 mx-auto d-block notBorder"
                         src={detail.picture}
                         alt="Generic placeholder image" />
                 </div>
@@ -22,7 +22,7 @@ const ItemDetail = () => {
                         <div className="form-group ">
                             <p className="item-c mt-5">{detail.condition === "new" ? "Nuevo" : "Usado"} - {detail.sold_quantity} {detail.sold_quantity > 1 ? " vendidos" : "vendido"} </p>
                             <p className="font-weight-bold item-title">{detail.title}</p>
-                            <p className="item-price">${numberFormat.format(detail.price)}</p>
+                            <p className="item-price">${numberFormat}{detail.decimals}</p>
                         </div>
                         <button type="button" className="btn btn-primary btn-lg btn-block">Comprar</button>
                     </form>
@@ -35,7 +35,7 @@ const ItemDetail = () => {
                     <br />
                     <p className="font-description">{detail.description}</p>
                 </div>
-            </div>          
+            </div>
 
         </div>
     );

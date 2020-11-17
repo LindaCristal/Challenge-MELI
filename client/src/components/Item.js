@@ -4,11 +4,14 @@ import shippingImg from '../assets/ic_shipping.png';
 const Item = ({ props }) => {
     const showShipping = () => {
         if (props.free_shipping)
-            return (<img
-                src={shippingImg}
-                alt="Generic placeholder image" className="item-shipping" />)
+            return (
+            <img src={shippingImg}
+                alt="Generic placeholder image" 
+                className="item-shipping" />
+                )
     }
 
+    const numberFormat = new Intl.NumberFormat("de-DE").format(props.price);
 
     return (
         <div className="notBorder">
@@ -19,7 +22,7 @@ const Item = ({ props }) => {
                 <div className="media-body">
                     <div className="row">
                         <div className=" align-self-center col-12">
-                            <h5 className="mt-0">{'$'}{props.price}
+                            <h5 className="mt-0">${numberFormat}
                                 <span>
                                 {showShipping()}
                                 </span>
@@ -27,15 +30,12 @@ const Item = ({ props }) => {
                         </div>
                     </div>
                     <p className="mb-0">{props.title}</p>
-
                 </div>
                 <div className="col-2 text-right">
                     <p>{props.address}</p>
                 </div>
             </div>
         </div>
-
-
     );
 
 }

@@ -26,7 +26,7 @@ const SearchBox = () => {
                     <form onSubmit={onSubmit} >
                         <div className="input-group mb-3 ">
                             <input type="text"
-                                className="form-control notBorder"
+                                className="form-control notBorder font-placeholder"
                                 placeholder="Nunca dejes de buscar"
                                 value={value}
                                 onChange={onChange}

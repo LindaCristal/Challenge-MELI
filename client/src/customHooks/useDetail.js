@@ -4,16 +4,28 @@ import axios from 'axios';
 const _URLBase = process.env.REACT_APP_URL_API_BASE;
 
 const useDetail = (id) => {
-  const [detail, setDetail] = useState([]);
+  const [detail, setDetail] = useState({
+    id: "",
+    title: "",
+    price: {
+      currency: "",
+      amount: 0,
+      decimals: 0,
+    },
+    picture: "",
+    condition: "",
+    free_shipping: "",
+    sold_quantity: "",
+    description: "",
+  });
 
   useEffect(() => {
     if (id && id !== "") {
       axios.get(`${_URLBase}items/${id}`)
         .then(res => {
           let data = res.data.item;
-
           setDetail({
-            pictures: data.pictures,
+            picture: data.picture,
             description: data.description,
             condition: data.condition,
             title: data.title,
@@ -32,4 +44,5 @@ const useDetail = (id) => {
 
   return { detail };
 };
+
 export default useDetail;

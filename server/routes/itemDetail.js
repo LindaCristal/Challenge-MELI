@@ -1,12 +1,64 @@
 var express = require('express');
 const axios = require('axios');
+const _BASEURL = 'https://api.mercadolibre.com';
 
 var router = express.Router();
-var responsePayload = {"author":{"name":"Linda","lastname":"Parra"},"item":{"id":"MLA873576748","title":"Gatos Persas Himalayos ! Excelentes Reservas!","price":{"currency":"ARS","amount":45000,"decimals":0},"condition":"new","free_shipping":false,"sold_quantity":0,"description":"Gatitos persas himalayos pelo largo ojos azules nuevos nacimientos en enero .contado :33.000 machitos hembritas 40.000 \nCaracteristicas : son de pelo largo ojos azules o celestes pueden ser blue point ( gris) o seal point ( chocolate\nFoto 1 madre \nFoto 2 padre\nResto de las fotos son bebes de otras camadas .\nNo se realizan envios fuera de la provincia de Cordoba para preservar su seguridad.\nEsta raza de gatos no se entregan antes de los 65 dias.\nSon para vivir solo en interior , no tienen instinto de supervivencia como un gato comun ademas los roban con facilidad!","picture":"https://http2.mlstatic.com/D_887758-MLA43178592449_082020-O.jpg"}}
 
-router.get('/items/:id', (req, res, next) =>
-{
+router.get('/items/:id', function (req, res, next) {
+
     let id = req.params.id;
-    res.json(responsePayload);
+    let item = `${_BASEURL}/items/${id}`;
+    let description = `${_BASEURL}/items/${id}/description`;
+
+    const requestItem = axios.get(item);
+    const requestDesciption = axios.get(description);
+
+    axios.all([requestItem, requestDesciption])
+        .then(axios.spread((requestItem, requestDesciption) => {
+
+            const data = requestItem.data;
+
+            var url_picture = '';
+            if (data.pictures) {
+                url_picture = data.pictures.length ? data.pictures[0].secure_url : '';
+            }
+            const free_shipping = data.shipping ? data.shipping.free_shipping : false;
+
+            var price_array = data.price.toString().split('.');
+
+            const price = price_array[0];
+            const decimals = price_array[1] ? price_array[1] : '00';
+
+            var priceParse = {
+                currency: data.currency_id,
+                amount: price,
+                decimals: decimals
+            }
+
+            var item = {
+                id: data.id,
+                title: data.title,
+                price: priceParse,
+                picture: url_picture,
+                condition: data.condition,
+                free_shipping: free_shipping,
+                sold_quantity: data.sold_quantity,
+                description: requestDesciption.data.plain_text
+            }
+
+            var author = {
+                name: "Linda",
+                lastname: "Parra"
+            }
+
+            var response = {
+                author: author,
+                item: item
+            }
+
+            res.json(response)
+            
+        })).catch(err => next(error))
+
 });
 module.exports = router;

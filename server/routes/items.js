@@ -1,6 +1,9 @@
 var express = require('express');
 const axios = require('axios');
 
+const _BASEURL = 'https://api.mercadolibre.com/sites/MLA/';
+
+
 var router = express.Router();
 
 router.get('/items', function (req, res, next) 
@@ -8,7 +11,7 @@ router.get('/items', function (req, res, next)
   let query = req.query.q;
 
   var request = {
-    url: `https://api.mercadolibre.com/sites/MLA/search?q=${query}`,
+    url: `${_BASEURL}search?q=${query}`,
     method: 'GET'
   };
 
@@ -32,17 +35,17 @@ router.get('/items', function (req, res, next)
 
         items = items.map(item => {
 
-          var priceFormat = item.price.toString().split('.');
-          const price = priceFormat[0];
-          const decimals = priceFormat[1] ? priceFormat[1] : '00';
+          // var priceFormat = item.price.toString().split('.');
+          // const price = priceFormat[0];
+          // const decimals = priceFormat[1] ? priceFormat[1] : '00';
 
           return {
             id: item.id,
             title: item.title,
             price: {
               currency: item.currency_id,
-              amount: price,
-              decimals: decimals
+              amount: item.price,
+              decimals: item.decimals
             },
             picture: item.thumbnail ? item.thumbnail : '',
             condition: item.condition,
@@ -52,14 +55,17 @@ router.get('/items', function (req, res, next)
         });
       }
 
+      var author = {
+        name: "Linda",
+        lastname: "Parra"
+      }
+
       const result = {
-        author: {
-          name: "Linda",
-          lastname: "Parra"
-        },
+        author: author,
         categories: list_categories,
         items: items
       }
+
       res.json(result)
     })
     .catch(err => err)

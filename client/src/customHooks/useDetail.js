@@ -4,20 +4,7 @@ import axios from 'axios';
 const _URLBase = process.env.REACT_APP_URL_API_BASE;
 
 const useDetail = (id) => {
-  const [detail, setDetail] = useState({
-    id: "",
-    title: "",
-    price: {
-      currency: "",
-      amount: 0,
-      decimals: 0,
-    },
-    picture: "",
-    condition: "",
-    free_shipping: "",
-    sold_quantity: "",
-    description: "",
-  });
+  const [detail, setDetail] = useState([]);
 
   useEffect(() => {
     if (id && id !== "") {
@@ -44,5 +31,4 @@ const useDetail = (id) => {
 
   return { detail };
 };
-
 export default useDetail;

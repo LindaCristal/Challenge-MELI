@@ -20,7 +20,6 @@ const useCategory = (query) => {
     }
     else{
       setCategories([]);
-
     }
      
   }, [query]);

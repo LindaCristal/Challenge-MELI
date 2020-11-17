@@ -1,7 +1,6 @@
 const itemsService = require('../services/itemsService');
 
 exports.getDetails = (req, res, next) => {
-
     if (req.params.id) {
         itemsService.getDetails(req.params.id)
             .then((data) => {

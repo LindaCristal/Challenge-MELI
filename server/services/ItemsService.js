@@ -32,11 +32,6 @@ exports.getItems = (query) => {
                 items = data.results.slice(0, 4);
 
                 items = items.map(item => {
-
-                    // var priceFormat = item.price.toString().split('.');
-                    // const price = priceFormat[0];
-                    // const decimals = priceFormat[1] ? priceFormat[1] : '00';
-
                     return {
                         id: item.id,
                         title: item.title,

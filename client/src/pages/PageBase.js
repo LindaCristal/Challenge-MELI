@@ -6,8 +6,7 @@ const PageBase = ({ children }) => {
 
     return (
         <>
-            <SearchBox></SearchBox>
-            
+            <SearchBox></SearchBox>            
             <div className="container px-0 page-container">
             <Breadcrumb></Breadcrumb>
                 {children}

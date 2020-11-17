@@ -16,13 +16,13 @@ exports.getItems = (query) => {
 
             const data = response.data;
 
-            var list_categories = [];
+            var listCategories = [];
             if (data.filters) {
                 const filter = data.filters
                     .find(filter => filter.id == "category");
 
                 if (filter) {
-                    list_categories = filter.values[0].path_from_root
+                    listCategories = filter.values[0].path_from_root
                         .map((categories) => categories.name);
                 }
             }
@@ -50,7 +50,7 @@ exports.getItems = (query) => {
 
             return {
                 author: author,
-                categories: list_categories,
+                categories: listCategories,
                 items: items
             }
         })
@@ -72,23 +72,12 @@ exports.getDetails = (id) => {
             if (data.pictures) {
                 url_picture = data.pictures.length ? data.pictures[0].secure_url : '';
             }
-            const free_shipping = data.shipping ? data.shipping.free_shipping : false;
-
-            var price_array = data.price.toString().split('.');
-
-            const price = price_array[0];
-            const decimals = price_array[1] ? price_array[1] : '00';
-
-            var priceParse = {
-                currency: data.currency_id,
-                amount: price,
-                decimals: decimals
-            }
+            const free_shipping = data.shipping ? data.shipping.free_shipping : false;         
 
             var item = {
                 id: data.id,
                 title: data.title,
-                price: priceParse,
+                price: data.price,
                 picture: url_picture,
                 condition: data.condition,
                 free_shipping: free_shipping,

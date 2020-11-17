@@ -30,6 +30,7 @@ const useItems = (query) => {
           throw err;
         });
     }
+    
 
   }, [query]);
 

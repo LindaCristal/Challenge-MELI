@@ -17,7 +17,7 @@ const useDetail = (id) => {
             condition: data.condition,
             title: data.title,
             sold_quantity: data.sold_quantity,
-            price: data.price.amount
+            price: data.price
           }
           );
 

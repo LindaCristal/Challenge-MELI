@@ -22,7 +22,7 @@ const ItemDetail = () => {
                         <div className="form-group ">
                             <p className="item-c mt-5">{detail.condition === "new" ? "Nuevo" : "Usado"} - {detail.sold_quantity} {detail.sold_quantity > 1 ? " vendidos" : "vendido"} </p>
                             <p className="font-weight-bold item-title">{detail.title}</p>
-                            <p className="item-price">${numberFormat}{detail.decimals}</p>
+                            <p className="item-price">${numberFormat}</p>
                         </div>
                         <button type="button" className="btn btn-primary btn-lg btn-block">Comprar</button>
                     </form>

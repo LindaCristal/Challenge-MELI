@@ -14,7 +14,8 @@ const ItemList = () => {
   const onClick = e => {
     history.push(`/items/${e}`);
   };
-
+ if (items)
+ 
   return (
     <div >
       <ul className="list-group notBorder">

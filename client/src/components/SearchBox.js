@@ -14,8 +14,9 @@ const SearchBox = () => {
     }
 
     const onSubmit = e => {
-        e.preventDefault();
-        history.push(`/items?query=${value}`);
+        e.preventDefault();          
+         history.push(`/items?query=${value}`);
+        setValue("");    
     };
 
     const Default = (e) => {

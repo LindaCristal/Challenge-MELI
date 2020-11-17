@@ -1,4 +1,4 @@
-const itemsService = require('../services/itemsService');
+const itemsService = require('../services/ItemsService');
 
 exports.getDetails = (req, res, next) => {
     if (req.params.id) {

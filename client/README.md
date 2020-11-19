@@ -1,3 +1,13 @@
+# Getting Started with Node
+
+Install Node with [Install Node](https://nodejs.org/es/download/).
+
+In the project directory, you can run:
+
+### `npm start`
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
